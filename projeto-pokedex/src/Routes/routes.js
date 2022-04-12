@@ -9,5 +9,5 @@ export const Router = () => (
         <Route index element={ <Home /> } />
         <Route path='pokedex' element={ <Pokedex /> } />
         <Route path='details' element={ <Details /> } />
-    </Routes>
+    </Routes> 
 )
