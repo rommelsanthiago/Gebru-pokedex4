@@ -1,11 +1,11 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Rommel Santhiago
+- Bruno Martins
+- Vinícius Duarte
 
-Link do Surge: www.link.com.br
+Link do Surge: gebru-pokedex4.surge.sh
 
 O que funciona:
 - Item 1
