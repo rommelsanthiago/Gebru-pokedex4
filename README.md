@@ -3,7 +3,7 @@
 Nome dos integrantes: 
 - Rommel Santhiago
 - Bruno Martins
-- Pessoa 3
+- vinicius duarte passo
 
 Link do Surge: gebru-pokedex4.surge.sh
 
