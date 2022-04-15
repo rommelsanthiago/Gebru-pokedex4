@@ -4,6 +4,7 @@ export const Container = styled.div`
     width: 12em;
     height: 15em;
     border: 2px solid black;
+    margin: 0.5em 0;
 `
 
 export const Content = styled.div`
