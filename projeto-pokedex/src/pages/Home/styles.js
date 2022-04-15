@@ -10,6 +10,7 @@ export const Content = styled.div`
     width: 80%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     padding: 3em;
 `
 
