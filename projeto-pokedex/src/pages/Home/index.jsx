@@ -27,7 +27,6 @@ const Home = () => {
         <Button onClick={() => goToPokedex(navigate)}>Pokedex</Button>
       </Header>
       <Styled.Content>
-        {/* <Card /> */}
         {pokemons}
       </Styled.Content>
     </Styled.Container>

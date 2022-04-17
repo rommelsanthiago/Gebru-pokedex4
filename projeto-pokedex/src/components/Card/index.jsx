@@ -6,6 +6,7 @@ import { goToDetails } from "../../Routes/coodinator";
 import { Button } from "../Button";
 import axios from "axios";
 
+
 function Card(props) {
   const navigate = useNavigate();
   const [photo, setPhoto] = useState("");
@@ -14,7 +15,7 @@ function Card(props) {
     const url = `https://pokeapi.co/api/v2/pokemon/${props.name}`;
     axios
       .get(url)
-      .then((res) => setPhoto(res.data.sprites.front_default))
+      .then((res) => setPhoto(res.data.sprites?.other.dream_world.front_default))
       .catch((err) => {
         console.log("ERROR", err.response);
       });
@@ -23,6 +24,7 @@ function Card(props) {
     photoPokemon();
   }, []);
 
+
   return (
     <Styled.Container>
       <Styled.Content>
@@ -30,8 +32,8 @@ function Card(props) {
         <Styled.Img src={photo} alt="Pokemon" />
       </Styled.Content>
       <Styled.FooterCard>
-        <Button>Add</Button>
-        <Button onClick={() => goToDetails(navigate)}>Details</Button>
+        <Button >Add</Button>
+        <Button onClick={() => goToDetails(navigate, props.name)}>Details</Button>
       </Styled.FooterCard>
     </Styled.Container>
   );
