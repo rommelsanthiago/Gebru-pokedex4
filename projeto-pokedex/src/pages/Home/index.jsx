@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useContext } from "react"
 
-import * as Styled from "./styles";
-import { useNavigate } from "react-router-dom";
-import { goToPokedex } from "../../Routes/coodinator";
-import Card from "../../components/Card";
-import Header from "../../components/Header";
-import { Button } from "../../components/Button";
-import { useRequestData } from "../../Hooks/useRequestData";
+import * as Styled from "./styles"
+import { useNavigate } from "react-router-dom"
+import { goToPokedex } from "../../Routes/coodinator"
+import Card from "../../components/Card"
+import Header from "../../components/Header"
+import { Button } from "../../components/Button"
+import GlobalStateContext from '../../Global/GlobalStateContext'
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [pokemon, err] = useRequestData(`https://pokeapi.co/api/v2/pokemon`);
-
-  const pokemons =
-    pokemon &&
-    pokemon.map((poke) => {
-      return (
-        <Card key={poke.name} name={poke.name} url={poke.url} poke={poke} />
-      );
-    });
+  const navigate = useNavigate()
+  const { pokemon } = useContext(GlobalStateContext)
 
   return (
     <Styled.Container>
@@ -27,10 +19,12 @@ const Home = () => {
         <Button onClick={() => goToPokedex(navigate)}>Pokedex</Button>
       </Header>
       <Styled.Content>
-        {pokemons}
+        {pokemon && pokemon.map((poke) => {
+            return <Card key={poke.name} poke={poke} />
+          })}
       </Styled.Content>
     </Styled.Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
