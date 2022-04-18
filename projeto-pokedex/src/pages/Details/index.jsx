@@ -7,28 +7,25 @@ import Header from '../../components/Header'
 import { Button } from '../../components/Button'
 import CardDetail from '../../components/CardDetail'
 import axios from 'axios'
+import { BASE_URL } from '../../constants/url'
 
-
-function Details() {
+const Details = () => {
   const navigate = useNavigate()
+  const params = useParams()
+  const [photoDetail, setPhotoDetail] = useState({})
 
-  const params = useParams();
-
-  const [photoDetail, setPhotoDetail] = useState("");
-
-  const photoDetailPokemon = () => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${params.id}`;
-    axios
-      .get(url)
-      .then((res) => setPhotoDetail(res.data))
-      .catch((err) => {
-        console.log("ERROR", err.response);
-      });
-  };
   useEffect(() => {
-    photoDetailPokemon();
-  }, []);
-
+    const photoDetailPokemon = async () => {
+      const res = await axios
+        .get(`${BASE_URL}/${params.id}`)
+        try {
+          setPhotoDetail(res.data)
+        } catch (err) {
+          console.log("ERROR", err.response)
+        }
+    }
+    photoDetailPokemon()
+  }, [params])
 
   return (
     <Styled.Container>
@@ -37,7 +34,6 @@ function Details() {
         <Button onClick={() => goToBack(navigate)}>Voltar</Button>
       </Header>
       <CardDetail photoDetail={photoDetail} />
-
     </Styled.Container>
   )
 }

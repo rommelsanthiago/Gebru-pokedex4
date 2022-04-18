@@ -3,7 +3,7 @@ import React from 'react'
 import * as Styled from './styles'
 import { useNavigate } from 'react-router-dom'
 import { goToHome } from '../../Routes/coodinator'
-import Card from '../../components/Card'
+// import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { Button } from '../../components/Button'
 
@@ -17,7 +17,6 @@ function Pokedex() {
         <Button onClick={() => goToHome(navigate)}>Home</Button>
       </Header>
       <Styled.Content>
-          <Card />
       </Styled.Content>
     </Styled.Container>
   )
