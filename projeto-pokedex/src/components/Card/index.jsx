@@ -28,6 +28,17 @@ const Card = (props) => {
 
     setPokedex(orderedPokedex)
     setPokemon(orderedPokemon)
+    setInLocalStorage("pokedex", orderedPokedex)
+    setInLocalStorage("pokemon", orderedPokemon)
+  }
+
+  const setInLocalStorage = (keyName, value) => {
+    try {
+        localStorage.setItem(keyName, JSON.stringify(value))
+    } catch (error) {
+        console.log('Error in local storage', error)
+        setInLocalStorage(keyName, JSON.parse(localStorage.getItem(keyName)))
+    }
   }
 
   return (
