@@ -8,46 +8,43 @@ const GlobalState = (props) => {
     const [pokemon, setPokemon] = useState([])
     const [pokedex, setPokedex] = useState([])
 
-    useEffect( () => {
-        getPokemon()
+    useEffect(() => {
+        getPokeList()
     }, [])
 
-    
-
-    useEffect( () => {
-        const newPoke = []
+    useEffect(() => {
+        const newPokes = []
 
         pokeList.forEach((item) => {
-            axios
-            .get(`${BASE_URL}/${item.name}`)
-            .then((res) => {
-                newPoke.push(res.data)
-                setPokemon(newPoke)
-            })
-            // try {
-            //     const results = async () => {
-            //         const result = await res
-            //         newPoke.push(result.data)
-            //     }
-            //     results()
-            //     // console.log(poke)
-            // } 
-            .catch (err => console.log(err))
+            const pokes = async () => {
+                try {
+                    const res = await axios
+                    .get(`${BASE_URL}/${item.name}`)
+                    newPokes.push(res.data)
+                    if (newPokes.length === 30) {
+                        const orderedList = newPokes.sort((a, b) => {
+                          return a.id - b.id;
+                        });
+                        setPokemon(orderedList)
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+            pokes()
         })
         
     }, [pokeList])
 
-    // console.log(pokemon)
-    // console.log(listPokemon)
+    
 
-    const getPokemon = async () => {
-        try {
-            const res = await axios 
-            .get(`${BASE_URL}`)
-                setPokeList(res.data.results)
-        } catch (error) {
-            console.log(error)
-        }
+    const getPokeList = () => {
+        axios
+        .get(`${BASE_URL}/?limit=30`)
+        .then((res) => {
+            setPokeList(res.data.results)
+        })
+        .catch (err => console.log(err))
     }
 
     const data = {
