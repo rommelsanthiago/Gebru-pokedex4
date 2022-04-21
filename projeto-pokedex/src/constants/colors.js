@@ -1,4 +1,4 @@
-export const primary = 'red'
+export const primary = 'orange'
 export const secondary = 'white'
 export const tertiary = '#012e40'
 export const quaternary = 'lightgray'
