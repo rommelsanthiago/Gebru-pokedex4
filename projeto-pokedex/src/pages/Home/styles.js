@@ -1,4 +1,5 @@
 import styled  from 'styled-components'
+import * as colors from '../../constants/colors'
 
 export const Container = styled.div`
     display: flex;
@@ -16,5 +17,5 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
     font-weight: bold;
-    color: red;
+    color: ${colors.primary};
 `
