@@ -30,10 +30,12 @@ const Details = () => {
   return (
     <Styled.Container>
       <Header>
-        <Styled.Title>Pagina de detalhes</Styled.Title>
-        <Button onClick={() => goToBack(navigate)}>Voltar</Button>
+        <Styled.Title>Details</Styled.Title>
+        <Button onClick={() => goToBack(navigate)}>Return</Button>
       </Header>
-      <CardDetail photoDetail={photoDetail} />
+      <Styled.Content>
+        <CardDetail photoDetail={photoDetail} />  
+      </Styled.Content>
     </Styled.Container>
   )
 }

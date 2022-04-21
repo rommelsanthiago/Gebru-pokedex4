@@ -48,7 +48,9 @@ const Card = (props) => {
         <Styled.Img src={poke.sprites.front_default} alt="Pokemon" />
       </Styled.Content>
       <Styled.FooterCard>
-        <Button onClick={addToPokedex} >Add</Button>
+        <Button onClick={addToPokedex}>
+          Add
+        </Button>
         <Button onClick={() => goToDetails(navigate, poke.name)}>Details</Button>
       </Styled.FooterCard>
     </Styled.Container>

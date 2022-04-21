@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
 
 const CardDetail = (props) => {
-    const [color, setColor] = useState('#00597c')
+    const [color, setColor] = useState('#9da0aa')
     const { photoDetail } = props
     const stats = photoDetail.stats
 
@@ -26,22 +26,21 @@ const CardDetail = (props) => {
                 setColor('#70530c')
             break;
             default:
-                setColor('#00597c');
+                setColor('#9da0aa');
         }
     }
 
-    console.log(type)
-
     return (
         <Styled.Container>
-            <Styled.PokemonCardContainer>
+            <Styled.Content>
                 <Styled.ImgPoke>
                     <Styled.Title>{photoDetail?.name}</Styled.Title>
                     <Styled.Img src={photoDetail.sprites?.other.home.front_default} alt={photoDetail?.name} />
                 </Styled.ImgPoke>
-                <div>
+                <Styled.Title>
+                    TIPO
                     <Styled.Span background={color}> {photoDetail.types?.[0].type.name}</Styled.Span>
-                </div>
+                </Styled.Title>
                 <Styled.PokemonStats>
                     <p>Experience: {photoDetail?.base_experience}</p>
                     {stats && stats.map((item) => {
@@ -50,7 +49,7 @@ const CardDetail = (props) => {
                         </p>
                     })}
                 </Styled.PokemonStats>
-            </Styled.PokemonCardContainer>
+            </Styled.Content>
         </Styled.Container>
     )
 }

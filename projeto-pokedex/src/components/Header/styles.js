@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import * as colors from '../../constants/colors'
 
 export const Container = styled.div`
     width: 100%;
@@ -6,5 +7,5 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid ${colors.primary};
 `

@@ -15,12 +15,11 @@ function Pokedex() {
   return (
     <Styled.Container>
       <Header>
-        <Styled.Title>Pagina Pokedex</Styled.Title>
+        <Styled.Title>Pokedex</Styled.Title>
         <Button onClick={() => goToHome(navigate)}>Home</Button>
       </Header>
       <Styled.Content>
-      {pokedex &&
-          pokedex.map((poke) => {
+      {pokedex && pokedex.map((poke) => {
             return <Card key={poke.name} poke={poke} />
       })}
       </Styled.Content>
