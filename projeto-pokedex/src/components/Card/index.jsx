@@ -8,7 +8,7 @@ import GlobalStateContext from '../../Global/GlobalStateContext'
 
 const Card = (props) => {
   const navigate = useNavigate()
-  const { poke } = props
+  const { poke, isPokedex } = props
   const { pokemon, setPokemon, pokedex, setPokedex } = useContext(GlobalStateContext)
 
   const addToPokedex = () => {
@@ -23,6 +23,28 @@ const Card = (props) => {
 
     const newPokedexList = [...pokedex, poke]
     const orderedPokedex = newPokedexList.sort((a, b) => {
+      return a.id - b.id
+    })
+
+    setPokedex(orderedPokedex)
+    setPokemon(orderedPokemon)
+    setInLocalStorage("pokedex", orderedPokedex)
+    setInLocalStorage("pokemon", orderedPokemon)
+  }
+
+  const removeFromPokedex = () => {
+    const pokeIndex = pokedex.findIndex(
+      (item) => item.name === poke.name
+    )
+
+    const newPokeList = [...pokedex]
+    newPokeList.splice(pokeIndex, 1)
+    const orderedPokedex = newPokeList.sort((a, b) => {
+      return a.id - b.id
+    })
+
+    const newPokemonsList = [...pokemon, poke]
+    const orderedPokemon = newPokemonsList.sort((a, b) => {
       return a.id - b.id
     })
 
@@ -48,8 +70,8 @@ const Card = (props) => {
         <Styled.Img src={poke.sprites.front_default} alt="Pokemon" />
       </Styled.Content>
       <Styled.FooterCard>
-        <Button onClick={addToPokedex}>
-          Add
+        <Button onClick={isPokedex ? removeFromPokedex : addToPokedex}>
+          {isPokedex ? "Remove" : "Add"}
         </Button>
         <Button onClick={() => goToDetails(navigate, poke.name)}>Details</Button>
       </Styled.FooterCard>

@@ -20,7 +20,7 @@ function Pokedex() {
       </Header>
       <Styled.Content>
       {pokedex && pokedex.map((poke) => {
-            return <Card key={poke.name} poke={poke} />
+            return <Card key={poke.name} poke={poke} isPokedex />
       })}
       </Styled.Content>
     </Styled.Container>
