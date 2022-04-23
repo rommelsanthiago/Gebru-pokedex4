@@ -19,3 +19,9 @@ export const Title = styled.h1`
     font-weight: bold;
     color: ${colors.primary};
 `
+
+export const PaginationBar = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`

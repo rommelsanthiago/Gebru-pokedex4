@@ -9,27 +9,30 @@ import GlobalStateContext from '../../Global/GlobalStateContext'
 const Card = (props) => {
   const navigate = useNavigate()
   const { poke, isPokedex } = props
-  const { pokemon, setPokemon, pokedex, setPokedex } = useContext(GlobalStateContext)
+  const { pokemons, setPokemons, pokedex, setPokedex } = useContext(GlobalStateContext)
 
   const addToPokedex = () => {
-    const pokeIndex = pokemon.findIndex(
-      (item) => item.name === poke.name
-    )
-    const newPokeList = [...pokemon]
-    newPokeList.splice(pokeIndex, 1)
-    const orderedPokemon = newPokeList.sort((a, b) => {
-      return a.id - b.id
-    })
-
-    const newPokedexList = [...pokedex, poke]
-    const orderedPokedex = newPokedexList.sort((a, b) => {
-      return a.id - b.id
-    })
-
-    setPokedex(orderedPokedex)
-    setPokemon(orderedPokemon)
-    setInLocalStorage("pokedex", orderedPokedex)
-    setInLocalStorage("pokemon", orderedPokemon)
+    if(pokedex.length < 25){
+      const pokeIndex = pokemons.findIndex(
+        (item) => item.name === poke.name
+      )
+      const newPokeList = [...pokemons]
+      newPokeList.splice(pokeIndex, 1)
+      const orderedPokemon = newPokeList.sort((a, b) => {
+        return a.id - b.id
+      })
+  
+      const newPokedexList = [...pokedex, poke]
+      const orderedPokedex = newPokedexList.sort((a, b) => {
+        return a.id - b.id
+      })
+  
+      setPokedex(orderedPokedex)
+      setPokemons(orderedPokemon)
+      setInLocalStorage("pokedex", orderedPokedex)
+    } else {
+      alert("Atenção você só pode adicionanr no maximo 25 pokemons a sua pokedex!")
+    }
   }
 
   const removeFromPokedex = () => {
@@ -43,15 +46,14 @@ const Card = (props) => {
       return a.id - b.id
     })
 
-    const newPokemonsList = [...pokemon, poke]
+    const newPokemonsList = [...pokemons, poke]
     const orderedPokemon = newPokemonsList.sort((a, b) => {
       return a.id - b.id
     })
 
     setPokedex(orderedPokedex)
-    setPokemon(orderedPokemon)
+    setPokemons(orderedPokemon)
     setInLocalStorage("pokedex", orderedPokedex)
-    setInLocalStorage("pokemon", orderedPokemon)
   }
 
   const setInLocalStorage = (keyName, value) => {

@@ -5,11 +5,11 @@ import { BASE_URL } from '../constants/url'
 
 const GlobalState = (props) => {
     const [pokeList, setPokeList] = useState([])
-    const [pokemon, setPokemon] = useState([])
+    const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState([])
+    const [newPokemons, setNewPokemons] = useState([])
 
     let localPokedex = JSON.parse(localStorage.getItem('pokedex'))
-    let localPokemon = JSON.parse(localStorage.getItem('pokemon'))
 
     useEffect(() => {
         getPokeList()
@@ -18,37 +18,49 @@ const GlobalState = (props) => {
     useEffect(() => {
         const newPokes = []
 
-        if(localPokedex && localPokemon){
+        if(localPokedex) {
             setPokedex(localPokedex)
-            setPokemon(localPokemon)
-        } else {
-            pokeList.forEach((item) => {
-                const pokes = async () => {
-                    try {
-                        const res = await axios
-                        .get(`${BASE_URL}/${item.name}`)
-                        newPokes.push(res.data)
-                        if (newPokes.length === 20) {
-                            const orderedList = newPokes.sort((a, b) => {
-                              return a.id - b.id;
-                            });
-                            setPokemon(orderedList)
-                        }
-                    } catch (err) {
-                        console.log(err)
-                    }
-                }
-                pokes()
-            })
         }
-        
-    }, [pokeList])
 
+        pokeList.forEach((item) => {
+            const pokes = async () => {
+                try {
+                    const res = await axios
+                    .get(`${BASE_URL}/${item.name}`)
+                    newPokes.push(res.data)
+                    if(pokedex && newPokes.length > 20){
+                        const orderedList = newPokes.sort((a, b) => {
+                            return a.id - b.id
+                        })
+                        setNewPokemons(orderedList)
+                    } else if (newPokes) {
+                        const orderedList = newPokes.sort((a, b) => {
+                            return a.id - b.id
+                        })
+                        setPokemons(orderedList)
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+            pokes()
+        })
+               
+    }, [pokeList])
     
+    useEffect(() => {
+        if(pokedex) {
+
+            const newPokes = newPokemons.filter( x => { 
+                return JSON.stringify(pokedex).indexOf(JSON.stringify(x)) < 0
+            })
+            setPokemons(newPokes)
+        }
+    }, [newPokemons])
 
     const getPokeList = () => {
         axios
-        .get(`${BASE_URL}/?limit=20`)
+        .get(`${BASE_URL}/?limit=200&offset=0`)
         .then((res) => {
             setPokeList(res.data.results)
         })
@@ -56,10 +68,11 @@ const GlobalState = (props) => {
     }
 
     const data = {
-        pokemon,
-        setPokemon,
+        pokemons,
+        setPokemons,
         pokedex,
-        setPokedex
+        setPokedex,
+        pokeList
     }
 
     return (
