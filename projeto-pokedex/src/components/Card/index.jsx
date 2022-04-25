@@ -68,7 +68,7 @@ const Card = (props) => {
   return (
     <Styled.Container>
       <Styled.Content>
-        <Styled.Title name={poke.name}>{poke.name}</Styled.Title>
+        <Styled.Title name={poke.name}>#{poke.id} {poke.name}</Styled.Title>
         <Styled.Img src={poke.sprites.front_default} alt="Pokemon" />
       </Styled.Content>
       <Styled.FooterCard>

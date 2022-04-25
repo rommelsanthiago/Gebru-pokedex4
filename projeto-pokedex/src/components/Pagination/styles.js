@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import * as colors from '../../constants/colors'
+import * as Colors from '../../constants/colors'
 
 export const Container = styled.ul`
     display: flex;
@@ -22,13 +22,13 @@ export const Item = styled.li`
     font-size: 13px;
     min-width: 32px;
     &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: ${Colors.septenary};
         cursor: pointer;
     }
 `
 
 export const ItemSelected = styled(Item)`
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${Colors.primary};
 `
 
 export const Dots = styled.li`

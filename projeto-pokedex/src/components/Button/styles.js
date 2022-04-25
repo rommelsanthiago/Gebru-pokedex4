@@ -8,6 +8,7 @@ export const Container = styled.button`
     background: transparent;
     border: 1px solid ${colors.primary};
     border-radius: 10px;
+    cursor: pointer;
     z-index: 1;
     &&: hover{
         background: ${colors.primary};

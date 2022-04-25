@@ -37,7 +37,7 @@ const Pagination = (props) => {
             <Styled.Item>
                 <Styled.DisabledLeft transform={'rotate(-135deg)'}/>
             </Styled.Item> :
-            <Styled.Item onClick={(e) => onPageChange(currentPage - 1, goToTop)}>
+            <Styled.Item onClick={(e) => goToTop(onPageChange(currentPage - 1))}>
                 <Styled.ArrowLeft/>
             </Styled.Item>
         }
@@ -48,13 +48,13 @@ const Pagination = (props) => {
             return (
                 pageNumber === currentPage ? 
                 <Styled.ItemSelected 
-                    onClick={() => onPageChange(pageNumber, goToTop)}
+                    onClick={() => goToTop(onPageChange(pageNumber))}
                     key={index}
                 >
                     {pageNumber}
                 </Styled.ItemSelected> :
                 <Styled.Item 
-                    onClick={() => onPageChange(pageNumber, goToTop)}
+                    onClick={() => goToTop(onPageChange(pageNumber))}
                     key={index}
                 >
                     {pageNumber}
@@ -66,7 +66,7 @@ const Pagination = (props) => {
             <Styled.Item>
                 <Styled.DisabledRight transform={'rotate(45deg)'} />
             </Styled.Item> :
-            <Styled.Item onClick={() => onPageChange(currentPage + 1, goToTop)}>
+            <Styled.Item onClick={() => goToTop(onPageChange(currentPage + 1))}>
                 <Styled.ArrowRight />
             </Styled.Item>
         }
