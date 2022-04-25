@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import GlobalStateContext from './GlobalStateContext'
@@ -8,6 +9,7 @@ const GlobalState = (props) => {
     const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState([])
     const [newPokemons, setNewPokemons] = useState([])
+    const [progress, setProgress] = useState(1)
 
     let localPokedex = JSON.parse(localStorage.getItem('pokedex'))
 
@@ -28,12 +30,7 @@ const GlobalState = (props) => {
                     const res = await axios
                     .get(`${BASE_URL}/${item.name}`)
                     newPokes.push(res.data)
-                    if(pokedex && newPokes.length > 20){
-                        const orderedList = newPokes.sort((a, b) => {
-                            return a.id - b.id
-                        })
-                        setNewPokemons(orderedList)
-                    } else if (newPokes) {
+                    if (newPokes.length === (pokeList.length / 2)) {
                         const orderedList = newPokes.sort((a, b) => {
                             return a.id - b.id
                         })
@@ -60,7 +57,7 @@ const GlobalState = (props) => {
 
     const getPokeList = () => {
         axios
-        .get(`${BASE_URL}/?limit=200&offset=0`)
+        .get(`${BASE_URL}/?limit=2000&offset=0`)
         .then((res) => {
             setPokeList(res.data.results)
         })
@@ -72,7 +69,9 @@ const GlobalState = (props) => {
         setPokemons,
         pokedex,
         setPokedex,
-        pokeList
+        pokeList,
+        progress, 
+        setProgress
     }
 
     return (

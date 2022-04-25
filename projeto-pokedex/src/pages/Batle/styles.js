@@ -8,9 +8,9 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-    width: 90%;
     height: 65vh;
     display: flex;
+    align-items: center;
     justify-content: center;
     padding: 3em;
 `

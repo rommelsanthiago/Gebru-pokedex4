@@ -7,8 +7,11 @@ export const goToPokedex = (navigate) => {
 }
 
 export const goToDetails = (navigate, id) => {
-navigate(`/details/${id}`)
-  
+    navigate(`/details/${id}`)
+}
+
+export const goToBalte = (navigate) => {
+    navigate('/batlezone')
 }
 
 export const goToBack = (navigate) => {

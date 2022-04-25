@@ -95,10 +95,11 @@ export const Img = styled.img`
 
 export const Span = styled.span`
     background-color: ${props => props.background};
-    padding: 7px;
-    width: 100px ;
+    padding: 3px;
+    width: 40px ;
     display: block;
     text-align: center;
+    font-size: 0.5em;
     position: relative;
     margin-top: 10px;
     border-radius: 5px;

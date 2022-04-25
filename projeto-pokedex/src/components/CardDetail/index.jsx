@@ -5,30 +5,31 @@ const CardDetail = (props) => {
     const [color, setColor] = useState('#9da0aa')
     const { photoDetail } = props
     const stats = photoDetail.stats
+    const types = photoDetail.types
 
-    useEffect(() => {
-        types()
-    })
+    // useEffect(() => {
+    //     types()
+    // })
 
-    let type = photoDetail.types?.[0].type.name && photoDetail.types?.[0].type.name
-    const types = () => {
-        switch (type) {
-            case 'grass':
-                setColor('green');
-            break;
-            case 'fire':
-                setColor('#ff4100');
-            break;
-            case 'water':
-                setColor('#00b7ff');
-            break;
-            case 'bug':
-                setColor('#70530c')
-            break;
-            default:
-                setColor('#9da0aa');
-        }
-    }
+    // let type = photoDetail.types?.[0].type.name && photoDetail.types?.[0].type.name
+    // const types = () => {
+    //     switch (type) {
+    //         case 'grass':
+    //             setColor('green');
+    //         break;
+    //         case 'fire':
+    //             setColor('#ff4100');
+    //         break;
+    //         case 'water':
+    //             setColor('#00b7ff');
+    //         break;
+    //         case 'bug':
+    //             setColor('#70530c')
+    //         break;
+    //         default:
+    //             setColor('#9da0aa');
+    //     }
+    // }
 
     return (
         <Styled.Container>
@@ -38,8 +39,12 @@ const CardDetail = (props) => {
                     <Styled.Img src={photoDetail.sprites?.other.home.front_default} alt={photoDetail?.name} />
                 </Styled.ImgPoke>
                 <Styled.Title>
-                    TIPO
-                    <Styled.Span background={color}> {photoDetail.types?.[0].type.name}</Styled.Span>
+                    TYPE
+                    {
+                        types && types.map(type => {
+                            return <Styled.Span background={color} key={type.type.name} >{type.type.name}</Styled.Span>
+                        })
+                    }
                 </Styled.Title>
                 <Styled.PokemonStats>
                     <p>Experience: {photoDetail?.base_experience}</p>
