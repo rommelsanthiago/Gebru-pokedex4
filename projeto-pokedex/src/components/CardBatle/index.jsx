@@ -4,7 +4,6 @@ import axios from 'axios'
 import { BASE_URL } from '../../constants/url'
 
 const CardBatle = (props) => {
-    const [color, setColor] = useState('#9da0aa')
     const [pokemon, setPokemon] = useState({})
 
     useEffect(() => {
@@ -23,26 +22,6 @@ const CardBatle = (props) => {
         poke()
     }
 
-    // useEffect(() => {types()})
-
-    // const types = () => {
-    //     switch (typ) {
-    //         case 'grass':
-    //             setColor('green');
-    //         break;
-    //         case 'fire':
-    //             setColor('#ff4100');
-    //         break;
-    //         case 'water':
-    //             setColor('#00b7ff');
-    //         break;
-    //         case 'bug':
-    //             setColor('#70530c')
-    //         break;
-    //         default:
-    //             setColor('#9da0aa');
-    //     }
-    // }
     const types = pokemon.types
     
     const stats = pokemon.stats
@@ -58,7 +37,7 @@ const CardBatle = (props) => {
                     TYPE
                     {
                         types && types.map(type => {
-                            return <Styled.Span background={color} key={type.type.name} >{type.type.name}</Styled.Span>
+                            return <Styled.Span key={type.type.name} >{type.type.name}</Styled.Span>
                         })
                     }
                 </Styled.Title>

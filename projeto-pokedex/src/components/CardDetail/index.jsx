@@ -1,35 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import * as Styled from "./styled"
 
 const CardDetail = (props) => {
-    const [color, setColor] = useState('#9da0aa')
     const { photoDetail } = props
     const stats = photoDetail.stats
     const types = photoDetail.types
-
-    // useEffect(() => {
-    //     types()
-    // })
-
-    // let type = photoDetail.types?.[0].type.name && photoDetail.types?.[0].type.name
-    // const types = () => {
-    //     switch (type) {
-    //         case 'grass':
-    //             setColor('green');
-    //         break;
-    //         case 'fire':
-    //             setColor('#ff4100');
-    //         break;
-    //         case 'water':
-    //             setColor('#00b7ff');
-    //         break;
-    //         case 'bug':
-    //             setColor('#70530c')
-    //         break;
-    //         default:
-    //             setColor('#9da0aa');
-    //     }
-    // }
 
     return (
         <Styled.Container>
@@ -42,7 +17,12 @@ const CardDetail = (props) => {
                     TYPE
                     {
                         types && types.map(type => {
-                            return <Styled.Span background={color} key={type.type.name} >{type.type.name}</Styled.Span>
+                            console.log(type.type.name)
+                            return <Styled.Span
+                                color={type.type.name} 
+                                key={type.type.name} >
+                                    {type.type.name}
+                            </Styled.Span>
                         })
                     }
                 </Styled.Title>
