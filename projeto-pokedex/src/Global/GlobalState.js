@@ -71,7 +71,8 @@ const GlobalState = (props) => {
         setPokedex,
         pokeList,
         progress, 
-        setProgress
+        setProgress,
+        setNewPokemons
     }
 
     return (

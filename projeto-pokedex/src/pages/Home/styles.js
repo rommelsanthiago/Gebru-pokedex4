@@ -52,3 +52,14 @@ export const Select = styled.select`
 export const Option = styled.option`
     color: ${colors.primary};
 `
+
+export const Span = styled.span`
+    width: 15px;
+    height: 15px;
+    background: ${colors.primary};
+    color: ${colors.secondary};
+    border: 1px solid transparent;
+    border-radius: 50%;
+    padding: 3px;
+    margin-right: 5px;
+`

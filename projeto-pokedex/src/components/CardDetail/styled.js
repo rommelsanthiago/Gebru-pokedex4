@@ -93,8 +93,49 @@ export const Img = styled.img`
     height: 250px;
 `
 
+const handleColorType = color => {
+    switch (color) {
+        case 'grass':
+            return '#5fba58';
+        case 'fire':
+            return '#ffa54f';
+        case 'water':
+            return '#61aede';
+        case 'bug':
+            return '#93c22d';
+        case 'dark':
+            return '#5a5366';
+        case 'dragon':
+            return '#067abe';
+        case 'eletric':
+            return '#f7db5f';
+        case 'fairy':
+            return '#f1a3e3';
+        case 'fighting':
+            return '#db4358';
+        case 'flying':
+            return '#9fb9e9';
+        case 'ghost':
+            return '#666ec1';
+        case 'ground':
+            return '#d6763a';
+        case 'ice':
+            return '#78d0c4';
+        case 'poison':
+            return '#a965c9';
+        case 'psychic':
+            return '#fa7e7e';
+        case 'rock':
+            return '#c8b98c';
+        case 'steel':
+            return '#5491a0'
+        default:
+            return '#939ba1';
+    }
+}
+
 export const Span = styled.span`
-    background-color: ${props => props.background};
+    background-color: ${({ color }) => handleColorType(color)};
     padding: 3px;
     width: 40px ;
     display: block;

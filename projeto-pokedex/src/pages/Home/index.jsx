@@ -13,7 +13,7 @@ import ProgressBar from '../../components/ProgressBar'
 
 const Home = () => {
   const navigate = useNavigate()
-  const { pokemons } = useContext(GlobalStateContext)
+  const { pokemons, pokedex } = useContext(GlobalStateContext)
   const [itemsPerPage, setItemsPerPage] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -30,7 +30,10 @@ const Home = () => {
   return (
     <Styled.Container>
       <Header>
-        <Button onClick={() => goToPokedex(navigate)}>Pokedex</Button>
+        <Button onClick={() => goToPokedex(navigate)}>
+          {pokedex.length > 0 ? <Styled.Span>{pokedex.length}</Styled.Span> : ""} 
+          Pokedex
+        </Button>
         <Styled.Title>
           <Styled.Pokeball src={Pokeball} alt='Pokeball' />
           Home
