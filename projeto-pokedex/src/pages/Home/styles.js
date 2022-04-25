@@ -27,6 +27,11 @@ export const Options = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @media (max-width: 640px) {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
 `
 
 export const PaginationBar = styled.div`
@@ -47,6 +52,11 @@ export const Select = styled.select`
     color: ${colors.primary};
     font-wight: bold;
     font-size: 1em;
+    @media (max-width: 640px) {
+        position: absolute;
+        left: 30px;
+        margin-bottom: 10px;
+    }
 `
 
 export const Option = styled.option`
