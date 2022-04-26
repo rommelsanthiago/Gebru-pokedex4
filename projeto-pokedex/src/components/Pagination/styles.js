@@ -5,6 +5,9 @@ export const Container = styled.ul`
     display: flex;
     list-style-type: none;
     padding: 1em;
+    @media (max-width: 640px) {
+        margin-top: 10px;
+    }
 `
 
 export const Item = styled.li`
