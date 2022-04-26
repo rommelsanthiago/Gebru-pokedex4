@@ -1,9 +1,9 @@
-# POKEDEX
+![image](https://user-images.githubusercontent.com/61671015/165355042-8d272f3c-cc94-4129-bf61-90452f580124.png)
 
-Nome dos integrantes: 
-- Rommel Santhiago
-- Bruno Martins
-- vinicius duarte passo
+INTEGRANTES: 
+- [Rommel Santhiago](https://github.com/rommelsanthiago)
+- [Bruno Martins](https://github.com/bzaws)
+- [vinicius duarte passo](https://github.com/ViniciusDuarte17)
 
 ### Link de acesso 
 
@@ -49,3 +49,6 @@ Nome dos integrantes:
 - [MUI](https://mui.com/pt/)
 - [Sweetalert2](https://sweetalert2.github.io)
 
+# IMAGENS
+
+https://user-images.githubusercontent.com/61671015/165361492-27ea7475-1f2e-452e-a355-35c6bf8aaf00.mp4
