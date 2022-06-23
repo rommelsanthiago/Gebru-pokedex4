@@ -7,7 +7,7 @@ INTEGRANTES:
 
 ### Link de acesso 
 
-[gebru-pokedex4.surge.sh](gebru-pokedex4.surge.sh)
+[gebru-pokedex4.surge.sh](https://gebru-pokedex4.surge.sh)
 
 # O que funciona:
 ### Página HOME
